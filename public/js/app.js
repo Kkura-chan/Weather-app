@@ -33,7 +33,7 @@ search_form.addEventListener("submit", async function (e) {
     return;
   }
   const html = `<div class="details">
-  <div class="time">${new Date(data.dt * 1000)}</div>
+  <div class="time">${new Date(data.dt * 1000).toLocaleTimeString()}</div>
   <div class="place">${data.name}-${data.sys.country}</div>
   <div class="temp">${data.main.temp}°C</div>
   <div class="description" style="display:flex">${
