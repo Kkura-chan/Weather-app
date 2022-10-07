@@ -7,16 +7,6 @@ const btn_search = document.querySelector(".btn-search");
 const search_form = document.querySelector(".search-form");
 const search_input = document.querySelector(".search-input");
 
-const details = document.querySelector(".details");
-
-btn_location.addEventListener("click", function (e) {
-  if (search_form.classList.contains("none")) {
-    search_form.classList.remove("none");
-  } else {
-    search_form.classList.add("none");
-  }
-});
-
 search_form.addEventListener("submit", async function (e) {
   e.preventDefault();
   const location = search_input.value;

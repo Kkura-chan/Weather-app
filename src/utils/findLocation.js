@@ -7,8 +7,6 @@ const findLocation = function (location, callback) {
   request({ url, json: true }, (err, res) => {
     if (err) {
       callback("Can't connect to the server!", undefined);
-    } else if (res.message) {
-      callback("Can't find location!", undefined);
     } else {
       callback(undefined, res.body);
     }
