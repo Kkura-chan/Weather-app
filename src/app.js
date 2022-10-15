@@ -34,6 +34,10 @@ app.get("/weather", (req, res) => {
   });
 });
 
+app.get("/map", (req, res) => {
+  res.render("map");
+});
+
 app.get("*", (req, res) => {
   res.render("404");
 });
