@@ -34,6 +34,16 @@ app.get("/weather", (req, res) => {
   });
 });
 
+app.get("/view", (req, res) => {
+  findMap(req.query.lat, req.query.lng, (message, data) => {
+    if (message) {
+      return res.send({ message });
+    } else {
+      return res.send(data);
+    }
+  });
+});
+
 app.get("/map", (req, res) => {
   res.render("map");
 });

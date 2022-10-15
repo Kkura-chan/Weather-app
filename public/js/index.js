@@ -14,7 +14,7 @@ search_form.addEventListener("submit", async function (e) {
   const data = await res.json();
   const details = document.querySelector(".details");
   if (details) {
-    details.classList.add("none");
+    details.remove();
   }
   if (data.message) {
     const html = `<div class="details"><span class="err-msg">${data.message}</span></div>`;

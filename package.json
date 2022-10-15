@@ -1,13 +1,13 @@
 {
   "name": "weather-app",
   "version": "1.0.0",
-  "description": "",
+  "description": "a small weather application",
   "main": "index.js",
   "scripts": {
     "start": "nodemon src/app.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "kieu ngoc thach",
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.1.8",
