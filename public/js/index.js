@@ -23,13 +23,17 @@ search_form.addEventListener("submit", async function (e) {
     return;
   }
   const html = `<div class="details">
-  <div class="time">${new Date(data.dt * 1000).toLocaleTimeString()}</div>
+  <div class="date">${new Intl.DateTimeFormat(data.sys.country, {
+    dateStyle: "full",
+    timeStyle: "long",
+  }).format(data.dt * 1000)}</div>
   <div class="place">${data.name}-${data.sys.country}</div>
   <div class="temp">${data.main.temp}°C</div>
+  <div class="humidity">Độ ẩm ${data.main.humidity}%</div>
   <div class="description" style="display:flex">${
     data.weather[0].description
-  } <img src="../img/${data.weather[0].icon}@2x.png" style="width:25px"/></div>
-  <div class="humidity">Độ ẩm ${data.main.humidity}%</div>
+  }</div>
+  <img src="../img/${data.weather[0].icon}@2x.png"/>
     </div>`;
 
   search_form.insertAdjacentHTML("afterEnd", html);

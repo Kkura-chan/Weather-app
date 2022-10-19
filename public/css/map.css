@@ -67,3 +67,8 @@ body {
   margin-left: 20px;
   text-transform: capitalize;
 }
+
+.description {
+  display: flex;
+  flex-direction: column;
+}
