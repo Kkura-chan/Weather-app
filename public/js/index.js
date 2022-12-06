@@ -22,14 +22,34 @@ search_form.addEventListener("submit", async function (e) {
     search_input.value = "";
     return;
   }
+  function calcTime(offset) {
+    // create Date object for current location
+    var d = new Date();
+
+    // convert to msec
+    // subtract local time zone offset
+    // get UTC time in msec
+    var utc = d.getTime() + d.getTimezoneOffset() * 60000;
+
+    // create new Date object for different city
+    // using supplied offset
+    var nd = new Date(utc + 3600000 * offset);
+
+    // return time as a string
+    const options = {
+      weekday: "long",
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    };
+    return nd.toLocaleString(options);
+  }
+  const dateTime = calcTime(data.timezone / 3600);
   const html = `
 <div class="details">
   <div class="top">
     <div>
-      <p class="date">${new Intl.DateTimeFormat(data.sys.country, {
-        dateStyle: "full",
-        timeStyle: "medium",
-      }).format(data.dt * 1000)}</p>
+      <p class="date">${dateTime}</p>
       <p class="place">${data.name}-${data.sys.country}</p>
       <p class="description">${data.weather[0].description}</p>
     </div>
@@ -53,8 +73,8 @@ search_form.addEventListener("submit", async function (e) {
         <span class="parameter-value">${data.main.temp_max}°C</span>
       </div>
       <div class="parameter-row">
-        <span class="parameter-label">Nhiệt độ thấp nhất</span>
-        <span class="parameter-value">${data.main.temp_min}</span>
+        <span class="parameter-label">Sức gió</span>
+        <span class="parameter-value">${data.wind.speed} m/s</span>
       </div>
     </div>
   </div>

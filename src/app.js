@@ -1,8 +1,7 @@
 const express = require("express");
 const ejs = require("ejs");
 const path = require("path");
-const findLocation = require("./utils/findLocation");
-const findMap = require("./utils/findMap");
+const mainController = require("./controller/mainController");
 const app = express();
 
 const viewsPath = path.join("__dirname", "../views");
@@ -19,30 +18,9 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
-app.get("/weather", (req, res) => {
-  if (!req.query.location) {
-    return res.send({
-      message: "Please fill in a location!",
-    });
-  }
-  findLocation(req.query.location, (message, data) => {
-    if (message) {
-      return res.send({ message });
-    } else {
-      return res.send(data);
-    }
-  });
-});
+app.get("/weather", mainController.locationService);
 
-app.get("/view", (req, res) => {
-  findMap(req.query.lat, req.query.lng, (message, data) => {
-    if (message) {
-      return res.send({ message });
-    } else {
-      return res.send(data);
-    }
-  });
-});
+app.get("/view", mainController.mapService);
 
 app.get("/map", (req, res) => {
   res.render("map");

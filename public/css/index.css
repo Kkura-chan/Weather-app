@@ -23,7 +23,7 @@ body {
   font-size: 1.6rem;
   line-height: 1.5;
   color: var(--text-color);
-  background-image: url("./img/hh01.jpg") no-repeat center center/cover;
+  /* background-image: url("./img/hh01.jpg") no-repeat center center/cover; */
 }
 
 .app {
@@ -138,7 +138,7 @@ button {
 .details {
   margin-left: 20px;
   text-transform: capitalize;
-  width: 450px;
+  width: 500px;
   border-radius: 6px;
   box-shadow: 10px -2px 20px 2px rgb(0 0 0 0 / 30%);
   color: #fff;
