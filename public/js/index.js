@@ -10,7 +10,7 @@ const search_input = document.querySelector(".search-input");
 search_form.addEventListener("submit", async function (e) {
   e.preventDefault();
   const location = search_input.value;
-  const res = await fetch(`http://localhost:3000/weather?location=${location}`);
+  const res = await fetch(`/weather?location=${location}`);
   const data = await res.json();
   const details = document.querySelector(".details");
   if (details) {
