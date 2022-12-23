@@ -16,7 +16,9 @@ if (navigator.geolocation) {
       }
       const { lat, lng } = mapEvent.latlng;
       marker = L.marker([lat, lng]).addTo(map);
-      const res = await fetch(`/view?lat=${lat}&lng=${lng}`);
+      const res = await fetch(
+        `https://find-weather.onrender.com/view?lat=${lat}&lng=${lng}`
+      );
       const data = await res.json();
       const home_page = document.querySelector(".home-page");
       const details = document.querySelector(".details");
